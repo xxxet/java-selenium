@@ -1,6 +1,6 @@
 package config;
 
-import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,14 +14,16 @@ public class DriverContainer {
     private static WebDriver driver;
 
 
-    public  WebDriver getDriver() {
+    public WebDriver getDriver() {
         return driver;
     }
 
     public static synchronized DriverContainer getInstance() {
         if (instance == null) {
             Runtime.getRuntime().addShutdownHook(new Thread() {
-                public void run() { driver.close(); }
+                public void run() {
+                    driver.close();
+                }
             });
 
             instance = new DriverContainer();
@@ -43,7 +45,7 @@ public class DriverContainer {
     }
 
     private void chromeSetup() {
-        ChromeDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
         driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
@@ -23,11 +24,11 @@ public abstract class Element {
     }
 
     protected <V> V waitUntil(Function<? super WebDriver, V> condition) {
-        return (new WebDriverWait(driver, config.timeout())).until(condition);
+        return (new WebDriverWait(driver, Duration.ofSeconds(config.timeout()))).until(condition);
     }
 
     protected <V> V waitUntil(Function<? super WebDriver, V> condition, int timeout) {
-        return (new WebDriverWait(driver, timeout)).until(condition);
+        return (new WebDriverWait(driver, Duration.ofSeconds(config.timeout()))).until(condition);
     }
 
     protected <V> V elementShould(Function<? super WebDriver, V> condition) {
@@ -46,7 +47,7 @@ public abstract class Element {
     }
 
 
-    public static ExpectedCondition<Boolean> valueMatchesPatter(final By locator, final Pattern pattern) {
+    public static ExpectedCondition<Boolean> valueMatchesPattern(final By locator, final Pattern pattern) {
         return new ExpectedCondition<Boolean>() {
             private String currentValue = null;
 
@@ -86,9 +87,8 @@ public abstract class Element {
 
             @Override
             public String toString() {
-                return String
-                        .format("text found by %s to match \"%s\". Current text: \"%s\"",
-                                locator, value, currentValue);
+                return String.format("text found by %s to match \"%s\". Current text: \"%s\"",
+                        locator, value, currentValue);
             }
         };
 

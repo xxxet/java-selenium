@@ -2,7 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import pages.amazon.Amazon;
+import pages.amazon.AmazonHome;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,14 +10,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AmazonTest {
 
     @Test
-    public void amazSignup() {
+    public void amazon_search() {
         String title = "House Without Lies (Lily's House Book 1)";
-        new Amazon()
-                .open()
-                .search(title)
-                .selectFirstItem();
 
-        String bookTitle = new Amazon().getTitle();
+        String bookTitle = new AmazonHome().open()
+                .search(title)
+                .selectFirstItem().getTitle();
+
         assertThat(bookTitle).isEqualTo(title);
 
     }

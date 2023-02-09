@@ -1,18 +1,19 @@
 package pages;
 
 
+import config.DriverContainer;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Set;
 
 public abstract class BasePage {
-    protected WebDriver driver;
+    protected WebDriver driver = DriverContainer.getInstance().getDriver();
     protected String savedHandle;
+
 
     public void saveHandle() {
         savedHandle = driver.getWindowHandle();
-
     }
 
     public void switchToSavedHandle() {
@@ -32,8 +33,8 @@ public abstract class BasePage {
         Set<String> after = driver.getWindowHandles();
 
         after.removeAll(before);
-        if (after.size() > 1) throw new RuntimeException("Failed to switch tab, more than 1 handles found, "
-                + after.toString());
+        if (after.size() > 1)
+            throw new RuntimeException("Failed to switch tab, more than 1 handles found, " + after);
         String handle = after.iterator().next();
         switchToHandle(handle);
 
@@ -48,7 +49,4 @@ public abstract class BasePage {
         }
 
     }
-
-
-
 }
