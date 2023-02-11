@@ -5,12 +5,18 @@ import config.DriverContainer;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+import javax.inject.Inject;
 import java.util.Set;
 
 public abstract class BasePage {
-    protected WebDriver driver = DriverContainer.getInstance().getDriver();
+
+    protected WebDriver driver;
     protected String savedHandle;
 
+//    @Inject
+    public BasePage() {
+        this.driver = DriverContainer.getInstance().getDriver();
+    }
 
     public void saveHandle() {
         savedHandle = driver.getWindowHandle();

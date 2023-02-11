@@ -1,6 +1,7 @@
 package elements;
 
 import com.google.common.base.Function;
+import config.DriverContainer;
 import config.TestConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.By;
@@ -12,14 +13,15 @@ import java.time.Duration;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
-public abstract class Element {
+public class Element {
+    WebDriver driver;
     protected TestConfig config = ConfigFactory.create(TestConfig.class);
 
-    protected WebDriver driver;
+
     protected By locator;
 
-    public Element(By locator, WebDriver driver) {
-        this.driver = driver;
+    public Element(By locator) {
+        this.driver = DriverContainer.getInstance().getDriver();
         this.locator = locator;
     }
 

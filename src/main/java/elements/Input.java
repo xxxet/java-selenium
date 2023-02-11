@@ -9,9 +9,10 @@ import org.slf4j.LoggerFactory;
 public class Input extends Element {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public Input(By selector, WebDriver driver) {
-        super(selector, driver);
+    public Input(By locator) {
+        super(locator);
     }
+
 
     public void enter(String text) {
         logger.info("enter(),  locator: {}, enter {}", locator, text);

@@ -14,9 +14,10 @@ import java.util.Optional;
 public class Button extends Element {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public Button(By selector, WebDriver driver) {
-        super(selector, driver);
+    public Button(By locator) {
+        super(locator);
     }
+
 
     public void click() {
         logger.info("click(),  locator: {}", locator);
