@@ -25,7 +25,6 @@ public class AmazonHome extends BasePage {
         searchInput.waitUntilMatches(item);
         submitButton.click();
         return new AmazonResults();
-//        return DaggerDriverComponent.create().buildAmazonResults();
     }
 }
 

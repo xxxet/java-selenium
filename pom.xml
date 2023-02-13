@@ -95,11 +95,6 @@
             <artifactId>commons-text</artifactId>
             <version>1.10.0</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.google.dagger</groupId>-->
-<!--            <artifactId>dagger</artifactId>-->
-<!--            <version>${dagger.version}</version>-->
-<!--        </dependency>-->
     </dependencies>
 
 
@@ -118,13 +113,6 @@
                     <source>${jdk.source.version}</source>
                     <target>${jdk.source.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
-<!--                    <annotationProcessorPaths>-->
-<!--                        <path>-->
-<!--                            <groupId>com.google.dagger</groupId>-->
-<!--                            <artifactId>dagger-compiler</artifactId>-->
-<!--                            <version>${dagger.version}</version>-->
-<!--                        </path>-->
-<!--                    </annotationProcessorPaths>-->
                 </configuration>
             </plugin>
         </plugins>

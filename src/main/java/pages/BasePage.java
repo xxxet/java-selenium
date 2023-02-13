@@ -4,8 +4,6 @@ package pages;
 import config.DriverContainer;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
-import javax.inject.Inject;
 import java.util.Set;
 
 public abstract class BasePage {
@@ -13,7 +11,6 @@ public abstract class BasePage {
     protected WebDriver driver;
     protected String savedHandle;
 
-//    @Inject
     public BasePage() {
         this.driver = DriverContainer.getInstance().getDriver();
     }

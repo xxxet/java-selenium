@@ -9,10 +9,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class DriverContainer {
     private static DriverContainer instance;
 
-    private TestConfig config = ConfigFactory.create(TestConfig.class);
+    private final TestConfig config = ConfigFactory.create(TestConfig.class);
 
     private static WebDriver driver;
-
 
     public WebDriver getDriver() {
         return driver;
@@ -20,12 +19,7 @@ public class DriverContainer {
 
     public static synchronized DriverContainer getInstance() {
         if (instance == null) {
-            Runtime.getRuntime().addShutdownHook(new Thread() {
-                public void run() {
-                    driver.close();
-                }
-            });
-
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> driver.quit()));
             instance = new DriverContainer();
             instance.createWebDriver();
         }
@@ -33,14 +27,10 @@ public class DriverContainer {
     }
 
     private void createWebDriver() {
-        switch (config.browser()) {
-            case "chrome":
-                chromeSetup();
-                break;
-
-            default:
-                throw new UnsupportedOperationException("Unsupported browser, try chrome");
-
+        if (config.browser().equals("chrome")) {
+            chromeSetup();
+        } else {
+            throw new UnsupportedOperationException("Unsupported browser, try chrome");
         }
     }
 
@@ -50,5 +40,4 @@ public class DriverContainer {
         driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
     }
-
 }
