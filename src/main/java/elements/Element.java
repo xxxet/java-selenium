@@ -1,7 +1,6 @@
 package elements;
 
 import com.google.common.base.Function;
-import config.DriverContainer;
 import config.TestConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.By;
@@ -9,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.inject.Inject;
 import java.time.Duration;
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -20,8 +20,9 @@ public class Element {
 
     protected By locator;
 
-    public Element(By locator) {
-        this.driver = DriverContainer.getInstance().getDriver();
+    @Inject
+    public Element(WebDriver driver, By locator) {
+        this.driver = driver;
         this.locator = locator;
     }
 

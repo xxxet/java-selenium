@@ -1,18 +1,28 @@
 package pages;
 
 
-import config.DriverContainer;
+import config.DaggerElementComponent;
+import config.ElementComponent;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+
 import java.util.Set;
 
-public abstract class BasePage {
+public class BasePage {
+
+
+    protected final ElementComponent.Builder elBuilder;
+
+    {
+        elBuilder = DaggerElementComponent.builder();
+    }
 
     protected WebDriver driver;
     protected String savedHandle;
 
-    public BasePage() {
-        this.driver = DriverContainer.getInstance().getDriver();
+
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
     }
 
     public void saveHandle() {

@@ -1,11 +1,14 @@
 package config;
 
+import dagger.Provides;
+import dagger.Module;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+@Module
 public class DriverContainer {
     private static DriverContainer instance;
 
@@ -17,13 +20,14 @@ public class DriverContainer {
         return driver;
     }
 
-    public static synchronized DriverContainer getInstance() {
+    @Provides
+    public static synchronized WebDriver getInstance() {
         if (instance == null) {
             Runtime.getRuntime().addShutdownHook(new Thread(() -> driver.quit()));
             instance = new DriverContainer();
             instance.createWebDriver();
         }
-        return instance;
+        return instance.getDriver();
     }
 
     private void createWebDriver() {

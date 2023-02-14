@@ -6,11 +6,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
+
 public class Input extends Element {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public Input(By locator) {
-        super(locator);
+    @Inject
+    public Input(WebDriver driver, By locator) {
+        super(driver, locator);
     }
 
 

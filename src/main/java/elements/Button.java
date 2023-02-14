@@ -3,19 +3,19 @@ package elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import java.util.List;
-import java.util.Optional;
 
 public class Button extends Element {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public Button(By locator) {
-        super(locator);
+    @Inject
+    public Button(WebDriver driver, By locator) {
+        super(driver, locator);
     }
 
 
@@ -55,7 +55,7 @@ public class Button extends Element {
     public void clickOnVisible() {
         logger.info("clickOnVisible(),  locator: {}", locator);
         List<WebElement> elements = driver.findElements(locator);
-        elements.removeIf(it -> it.isDisplayed() == false);
+        elements.removeIf(it -> !it.isDisplayed());
         elements.get(0).click();
     }
 }
