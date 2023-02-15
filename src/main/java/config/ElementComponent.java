@@ -12,11 +12,11 @@ import org.openqa.selenium.By;
 @Component(modules = DriverContainer.class)
 public interface ElementComponent {
 
-    Button buildButton();
+    Button button();
 
-    Input buildInput();
+    Input input();
 
-    Element buildElement();
+    Element element();
 
     @Component.Builder
     interface Builder {

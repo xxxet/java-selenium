@@ -8,9 +8,9 @@ import pages.amazon.AmazonResults;
 
 @Component(modules = DriverContainer.class)
 public interface PageComponent {
-    AmazonHome buildAmazonHome();
+    AmazonHome amazonHome();
 
-    AmazonResults buildAmazonResults();
+    AmazonResults amazonResults();
 
 
 }

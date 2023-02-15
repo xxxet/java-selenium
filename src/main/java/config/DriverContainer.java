@@ -8,27 +8,35 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.sql.Driver;
+
 @Module
 public class DriverContainer {
-    private static DriverContainer instance;
+    private WebDriver driver;
+    {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> driver.quit()));
+    }
 
     private final TestConfig config = ConfigFactory.create(TestConfig.class);
 
-    private static WebDriver driver;
 
     public WebDriver getDriver() {
         return driver;
     }
 
     @Provides
-    public static synchronized WebDriver getInstance() {
-        if (instance == null) {
-            Runtime.getRuntime().addShutdownHook(new Thread(() -> driver.quit()));
-            instance = new DriverContainer();
-            instance.createWebDriver();
-        }
-        return instance.getDriver();
+    public static WebDriver getInstance() {
+        return _threadLocal.get().getDriver();
     }
+
+
+    private static ThreadLocal<DriverContainer> _threadLocal =
+            ThreadLocal.withInitial(() -> {
+                var dc = new DriverContainer();
+                dc.createWebDriver();
+                return dc;
+            });
+
 
     private void createWebDriver() {
         if (config.browser().equals("chrome")) {

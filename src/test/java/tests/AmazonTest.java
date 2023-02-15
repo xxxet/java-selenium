@@ -2,25 +2,48 @@ package tests;
 
 import config.DaggerPageComponent;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AmazonTest {
 
 
     @Test
-    public void amazon_search() {
-        var title = "House Without Lies (Lily's House Book 1)";
-//        AmazonHome amHome = DaggerDriverComponent.create().buildAmazonHome();
+    public void amazon_search_0() {
+        System.out.println("amazon_search_0() start => " + Thread.currentThread().getName());
+        DaggerPageComponent.create().amazonHome()
+                .open();
+        System.out.println("amazon_open_0() stop => " + Thread.currentThread().getName());
+    }
 
-        var bookTitle = DaggerPageComponent.create().buildAmazonHome()
-                .open()
-                .search(title)
-                .selectFirstItem().getTitle();
+    @Test
+    public void amazon_open_1() {
+        System.out.println("amazon_open_1() start => " + Thread.currentThread().getName());
+        DaggerPageComponent.create().amazonHome()
+                .open();
+        System.out.println("amazon_open_1() stop => " + Thread.currentThread().getName());
+    }
 
-        assertThat(bookTitle).isEqualTo(title);
+    @Test
+    public void amazon_open_2() {
+        System.out.println("amazon_open_2() start => " + Thread.currentThread().getName());
+        DaggerPageComponent.create().amazonHome()
+                .open();
+        System.out.println("amazon_open_2() stop => " + Thread.currentThread().getName());
+    }
+
+    @Test
+    public void amazon_open_3() {
+        System.out.println("amazon_open_3() start => " + Thread.currentThread().getName());
+        DaggerPageComponent.create().amazonHome()
+                .open();
+        System.out.println("amazon_open_3() stop => " + Thread.currentThread().getName());
+    }
+
+    @Test
+    public void amazon_open_4() {
+        System.out.println("amazon_open_4() start => " + Thread.currentThread().getName());
+        DaggerPageComponent.create().amazonHome()
+                .open();
+        System.out.println("amazon_open_4() stop => " + Thread.currentThread().getName());
     }
 }

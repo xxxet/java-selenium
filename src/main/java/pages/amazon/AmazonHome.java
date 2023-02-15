@@ -1,5 +1,6 @@
 package pages.amazon;
 
+import config.DaggerPageComponent;
 import elements.Button;
 import elements.Input;
 import org.openqa.selenium.By;
@@ -10,9 +11,9 @@ import javax.inject.Inject;
 
 public class AmazonHome extends BasePage {
 
-    private final Input searchInput = elBuilder.locator(By.id("twotabsearchtextbox")).build().buildInput();
-    private final Button signInBtn = elBuilder.locator(By.xpath("//*[contains(text(), 'Hello, sign in')]")).build().buildButton();
-    private final Button submitButton = elBuilder.locator(By.cssSelector("[type=submit]")).build().buildButton();
+    private final Input searchInput = elBuilder.locator(By.id("twotabsearchtextbox")).build().input();
+    private final Button signInBtn = elBuilder.locator(By.xpath("//*[contains(text(), 'Hello, sign in')]")).build().button();
+    private final Button submitButton = elBuilder.locator(By.cssSelector("[type=submit]")).build().button();
 
     @Inject
     public AmazonHome(WebDriver driver) {
@@ -30,7 +31,7 @@ public class AmazonHome extends BasePage {
         searchInput.enter(item);
         searchInput.waitUntilMatches(item);
         submitButton.click();
-        return new AmazonResults(driver);
+        return DaggerPageComponent.create().amazonResults();
     }
 }
 

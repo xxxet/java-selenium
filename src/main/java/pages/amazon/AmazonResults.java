@@ -11,21 +11,19 @@ import javax.inject.Inject;
 
 public class AmazonResults extends BasePage {
 
-    private final Button firstItemBtn = elBuilder.locator(By.cssSelector("[cel_widget_id*=SEARCH_RESULTS] div[class*='sg-col']")).build().buildButton();
+    private final Button firstItemBtn = elBuilder.locator(By.cssSelector("[cel_widget_id*=SEARCH_RESULTS] div[class*='sg-col']")).build().button();
 
-    private final Input ebookTitleInput = elBuilder.locator(By.cssSelector("[id*=productTitle]")).build().buildInput();
+    private final Input ebookTitleInput = elBuilder.locator(By.cssSelector("[id*=productTitle]")).build().input();
 
     @Inject
     public AmazonResults(WebDriver driver) {
         super(driver);
     }
 
-
     public AmazonResults selectFirstItem() {
         firstItemBtn.click();
         return this;
     }
-
 
     public String getTitle() {
         return ebookTitleInput.getText();

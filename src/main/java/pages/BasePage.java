@@ -10,7 +10,6 @@ import java.util.Set;
 
 public class BasePage {
 
-
     protected final ElementComponent.Builder elBuilder;
 
     {
