@@ -2,10 +2,15 @@ package tests;
 
 import config.DaggerPageComponent;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 //@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class Amazon2Test {
 
+
+@ExtendWith(ScreenshotWatcher.class)
+public class Amazon2Test {
+//    @RegisterExtension
+//    static final ScreenshotWatcher watcher = new ScreenshotWatcher();
 
     @Test
     public void amazon_search_test2_0() {

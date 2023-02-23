@@ -12,7 +12,7 @@ import javax.inject.Inject;
 public class AmazonHome extends BasePage {
 
     private final Input searchInput = elBuilder.locator(By.id("twotabsearchtextbox")).build().input();
-    private final Button signInBtn = elBuilder.locator(By.xpath("//*[contains(text(), 'Hello, sign in')]")).build().button();
+    private final Button signInBtn = elBuilder.locator(By.xpath("//*[contains(text(), '12Hello, sign in')]")).build().button();
     private final Button submitButton = elBuilder.locator(By.cssSelector("[type=submit]")).build().button();
 
     @Inject

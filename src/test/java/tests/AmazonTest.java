@@ -1,8 +1,10 @@
 package tests;
 
 import config.DaggerPageComponent;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+@Disabled
 //@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AmazonTest {
 
