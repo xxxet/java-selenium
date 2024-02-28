@@ -7,4 +7,14 @@ public interface TestConfig extends Config {
     int timeout();
 
     String browser();
+
+    String restLoginURL();
+
+    String restBaseURL();
+
+    String clientName();
+
+    String clientSecret();
+
+    String clientId();
 }

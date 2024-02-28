@@ -12,7 +12,6 @@ public class AmazonSearchTest  {
 
 
     @Test
-    @Disabled
     public void amazon_search() {
         var title = "House Without Lies (Lily's House Book 1)";
 
