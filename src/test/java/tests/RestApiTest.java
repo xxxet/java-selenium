@@ -13,27 +13,6 @@ public class RestApiTest {
 
     @Test
     public void getTodos() {
-//        Unirest.config().setObjectMapper(new JacksonObjectMapper());
-//        Unirest.config().setObjectMapper(new ObjectMapper() {
-//            com.fasterxml.jackson.databind.ObjectMapper mapper
-//                    = new com.fasterxml.jackson.databind.ObjectMapper();
-//
-//            public String writeValue(Object value) {
-//                try {
-//                    return mapper.writeValueAsString(value);
-//                } catch (JsonProcessingException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//
-//            public <T> T readValue(String value, Class<T> valueType) {
-//                try {
-//                    return mapper.readValue(value, valueType);
-//                } catch (JsonProcessingException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//        });
         TodoService todoServ = new TodoService();
         HttpResponse<List<TodoModel>> todos = todoServ.getTodos();
         List<String> titles = todos.getBody().stream().map(it -> it.getTitle())
@@ -41,9 +20,6 @@ public class RestApiTest {
         for (String title : titles) {
             System.out.println(title);
         }
-
-
-        return;
     }
 
     @Test
