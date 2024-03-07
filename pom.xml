@@ -47,19 +47,29 @@
             <groupId>com.konghq</groupId>
             <artifactId>unirest-java-core</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.konghq</groupId>-->
+<!--            <artifactId>unirest-objectmapper-jackson</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--            <artifactId>jackson-databind</artifactId>-->
+<!--            <version>2.16.1</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.fasterxml.jackson.datatype</groupId>-->
+<!--            <artifactId>jackson-datatype-jsr310</artifactId>-->
+<!--            <version>2.16.1</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
         <dependency>
             <groupId>com.konghq</groupId>
-            <artifactId>unirest-objectmapper-jackson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.16.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.16.1</version>
+            <artifactId>unirest-object-mappers-gson</artifactId>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
