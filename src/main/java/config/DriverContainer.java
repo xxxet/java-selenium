@@ -1,14 +1,12 @@
 package config;
 
-import dagger.Provides;
 import dagger.Module;
+import dagger.Provides;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
-import java.sql.Driver;
 
 @Module
 public class DriverContainer {
@@ -30,7 +28,7 @@ public class DriverContainer {
     }
 
 
-    private static ThreadLocal<DriverContainer> _threadLocal =
+    private static final ThreadLocal<DriverContainer> _threadLocal =
             ThreadLocal.withInitial(() -> {
                 var dc = new DriverContainer();
                 dc.createWebDriver();

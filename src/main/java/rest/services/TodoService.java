@@ -26,14 +26,14 @@ public class TodoService {
         return (HttpResponse<TodoModel>) apiClient.getResponse();
     }
 
-    public HttpResponse<List<TodoModel>> putTodo(TodoModel todo) {
-        apiClient.put(todo, TodoModel.class, todo.getId());
+    public HttpResponse<TodoModel> putTodo(TodoModel todo) {
+        apiClient.put(todo, TodoModel.class, todo.id());
         apiClient.printResponse();
-        return (HttpResponse<List<TodoModel>>) apiClient.getResponse();
+        return (HttpResponse<TodoModel>) apiClient.getResponse();
     }
 
     public HttpResponse<List<TodoModel>> deleteTodo(TodoModel todo) {
-        apiClient.delete(todo.getId(), TodoModel.class);
+        apiClient.delete(todo.id(), TodoModel.class);
         apiClient.printResponse();
         return (HttpResponse<List<TodoModel>>) apiClient.getResponse();
     }

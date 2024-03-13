@@ -14,11 +14,9 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class Element {
-    WebDriver driver;
-    protected TestConfig config = ConfigFactory.create(TestConfig.class);
-
-
-    protected By locator;
+    protected final WebDriver driver;
+    protected final TestConfig config = ConfigFactory.create(TestConfig.class);
+    protected final By locator;
 
     @Inject
     public Element(WebDriver driver, By locator) {
@@ -51,7 +49,7 @@ public class Element {
 
 
     public static ExpectedCondition<Boolean> valueMatchesPattern(final By locator, final Pattern pattern) {
-        return new ExpectedCondition<Boolean>() {
+        return new ExpectedCondition<>() {
             private String currentValue = null;
 
             @Override
@@ -75,7 +73,7 @@ public class Element {
     }
 
     public static ExpectedCondition<Boolean> valueMatches(final By locator, final String value) {
-        return new ExpectedCondition<Boolean>() {
+        return new ExpectedCondition<>() {
             private String currentValue = null;
 
             @Override

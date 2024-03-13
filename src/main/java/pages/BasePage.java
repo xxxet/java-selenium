@@ -6,6 +6,7 @@ import config.ElementComponent;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
 public class BasePage {
@@ -55,10 +56,9 @@ public class BasePage {
 
     protected <T> T createInstance(Class<T> clazz) {
         try {
-            return clazz.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
+            return clazz.getDeclaredConstructor().newInstance();
+        } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
             throw new RuntimeException("Failed to create instance of " + clazz.getName());
         }
-
     }
 }

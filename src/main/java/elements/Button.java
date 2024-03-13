@@ -56,6 +56,6 @@ public class Button extends Element {
         logger.info("clickOnVisible(),  locator: {}", locator);
         List<WebElement> elements = driver.findElements(locator);
         elements.removeIf(it -> !it.isDisplayed());
-        elements.get(0).click();
+        elements.getFirst().click();
     }
 }

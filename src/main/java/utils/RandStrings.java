@@ -3,7 +3,7 @@ package utils;
 import org.apache.commons.text.RandomStringGenerator;
 
 public class RandStrings {
-    private static RandomStringGenerator generator = new RandomStringGenerator.Builder()
+    private static final RandomStringGenerator generator = new RandomStringGenerator.Builder()
             .withinRange('a', 'z')
             .build();
 

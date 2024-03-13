@@ -2,19 +2,18 @@ package tests;
 
 import kong.unirest.core.HttpResponse;
 import org.junit.jupiter.api.Test;
+import rest.command.TodoCommandService;
 import rest.models.TodoModel;
-import rest.services.TodoService;
+
 import java.util.List;
 
-public class RestApiTest {
+public class RestApiCommandTest {
 
     @Test
     public void getTodos() {
-        TodoService todoServ = new TodoService();
-        HttpResponse<List<TodoModel>> todos = todoServ.getTodos();
-        List<String> titles = todos.getBody().stream()
-                .map(TodoModel::title)
-                .toList();
+        var todoServ = new TodoCommandService();
+        var todos = todoServ.getTodos();
+        List<String> titles = todos.getBody().stream().map(TodoModel::title).toList();
         for (String title : titles) {
             System.out.println(title);
         }
@@ -22,7 +21,7 @@ public class RestApiTest {
 
     @Test
     public void putTodo() {
-        TodoService todoServ = new TodoService();
+        var todoServ = new TodoCommandService();
         HttpResponse<List<TodoModel>> todos = todoServ.getTodos();
         var first = todos.getBody().getFirst();
         var updatedFirst = new TodoModel(first.userId(), first.id(), first.title() + "UPD", first.completed());
@@ -32,14 +31,14 @@ public class RestApiTest {
 
     @Test
     public void postTodo() {
-        TodoService todoServ = new TodoService();
+        var todoServ = new TodoCommandService();
         TodoModel todo = new TodoModel(1, 1, "some  text", false);
         todoServ.postTodo(todo);
     }
 
     @Test
     public void delete() {
-        TodoService todoServ = new TodoService();
+        var todoServ = new TodoCommandService();
         TodoModel todo = new TodoModel(1, 1, "some  text", false);
         HttpResponse<TodoModel> createdTodo = todoServ.postTodo(todo);
         todoServ.deleteTodo(createdTodo.getBody());

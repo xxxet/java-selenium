@@ -13,7 +13,7 @@ public class RestAuthorization {
     private static RestAuthorization restAuth = null;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    protected TestConfig config = ConfigFactory.create(TestConfig.class);
+    protected final TestConfig config = ConfigFactory.create(TestConfig.class);
     private String authToken;
 
     public static RestAuthorization getRestAuth() {
