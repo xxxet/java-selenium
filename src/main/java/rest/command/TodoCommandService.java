@@ -3,6 +3,7 @@ package rest.command;
 import config.TestConfig;
 import kong.unirest.core.GenericType;
 import kong.unirest.core.HttpResponse;
+import kong.unirest.core.JsonNode;
 import org.aeonbits.owner.ConfigFactory;
 import rest.models.TodoModel;
 
@@ -18,31 +19,31 @@ public class TodoCommandService {
     }
 
     public HttpResponse<List<TodoModel>> getTodos() {
-        var getListOfTodos = new GetListRequest(url, () -> new GenericType<List<TodoModel>>() {
+        GetListRequest getListOfTodos = new GetListRequest(url, new GenericType<List<TodoModel>>() {
         });
         getListOfTodos.execute();
-        return (HttpResponse<List<TodoModel>>) getListOfTodos.getResponse();
+        return getListOfTodos.getResponse();
     }
 
     public HttpResponse<TodoModel> postTodo(TodoModel todo) {
-        var postR = new PostRequest<>(url, todo);
+        PostRequest<TodoModel> postR = new PostRequest<>(url, todo);
         postR.execute();
         return postR.getResponse();
     }
 
     public HttpResponse<TodoModel> getTodo(TodoModel todo) {
-        var getR = new GetRequest<>(url + "/" + todo.id(), todo);
+        GetRequest<TodoModel> getR = new GetRequest<>(url + "/" + todo.id(), todo);
         return getR.getResponse();
     }
 
     public HttpResponse<TodoModel> putTodo(TodoModel todo) {
-        var putR = new PutRequest<>(url + "/" + todo.id(), todo);
+        PutRequest<TodoModel> putR = new PutRequest<>(url + "/" + todo.id(), todo);
         putR.execute();
         return putR.getResponse();
     }
 
-    public HttpResponse<TodoModel> deleteTodo(TodoModel todo) {
-        var deleteR = new DeleteRequest<>(url, todo);
+    public HttpResponse<JsonNode> deleteTodo(TodoModel todo) {
+        DeleteRequest deleteR = new DeleteRequest(url + "/" + todo.id());
         deleteR.execute();
         return deleteR.getResponse();
     }
