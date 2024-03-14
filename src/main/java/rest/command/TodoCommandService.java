@@ -6,10 +6,11 @@ import kong.unirest.core.HttpResponse;
 import kong.unirest.core.JsonNode;
 import org.aeonbits.owner.ConfigFactory;
 import rest.models.TodoModel;
+import utils.RandStrings;
 
 import java.util.List;
 
-public class TodoCommandService {
+public class TodoCommandService implements Service{
     public static final String ENDPOINT = "/todos";
     protected final TestConfig config = ConfigFactory.create(TestConfig.class);
     private final String url;
@@ -47,4 +48,12 @@ public class TodoCommandService {
         deleteR.execute();
         return deleteR.getResponse();
     }
+
+    @Override
+    public TodoModel createRandom() {
+        var todoModel = new TodoModel(1, 1, RandStrings.getRandom(20), false);
+        postTodo(todoModel);
+        return todoModel;
+    }
+
 }
