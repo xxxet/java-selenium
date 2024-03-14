@@ -26,7 +26,7 @@ public interface Request {
     }
 
 
-    default void printResponse(HttpResponse response) {
+    default void printResponse(HttpResponse<?> response) {
         logger.info("Response: {}, {}", response.getStatus(), response.getRequestSummary().asString());
     }
 

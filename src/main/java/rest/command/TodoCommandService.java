@@ -10,7 +10,7 @@ import utils.RandStrings;
 
 import java.util.List;
 
-public class TodoCommandService implements Service{
+public class TodoCommandService implements Service {
     public static final String ENDPOINT = "/todos";
     protected final TestConfig config = ConfigFactory.create(TestConfig.class);
     private final String url;
@@ -20,8 +20,9 @@ public class TodoCommandService implements Service{
     }
 
     public HttpResponse<List<TodoModel>> getTodos() {
-        GetListRequest getListOfTodos = new GetListRequest(url, new GenericType<List<TodoModel>>() {
-        });
+        GetListRequest<List<TodoModel>> getListOfTodos = new GetListRequest<>(url,
+                new GenericType<>() {
+                });
         getListOfTodos.execute();
         return getListOfTodos.getResponse();
     }

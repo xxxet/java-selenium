@@ -7,22 +7,22 @@ import org.slf4j.LoggerFactory;
 
 public class GetRequest<T> implements Request {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private final T obj;
+    private final T respType;
     private final String url;
     private HttpResponse response;
 
 
-    public GetRequest(String url, T obj) {
+    public GetRequest(String url, T respType) {
         this.url = url;
-        this.obj = obj;
+        this.respType = respType;
     }
 
     @Override
     public void execute() {
-        logger.info("post(), {}, {}", url, obj.toString());
+        logger.info("GET, {}", url);
         response = Unirest.get(url)
                 .headers(headers)
-                .asObject(obj.getClass())
+                .asObject(respType.getClass())
                 .ifFailure(this::onFailure);
         printResponse(response);
     }

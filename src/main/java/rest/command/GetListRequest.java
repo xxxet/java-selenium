@@ -6,14 +6,14 @@ import kong.unirest.core.Unirest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GetListRequest implements Request {
+public class GetListRequest<T> implements Request {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final String url;
     private final GenericType<?> respType;
     private HttpResponse<?> response;
 
 
-    public GetListRequest(String url, GenericType<?> respType) {
+    public GetListRequest(String url, GenericType<T> respType) {
         this.url = url;
         this.respType = respType;
     }

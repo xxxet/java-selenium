@@ -1,5 +1,5 @@
 package rest.models;
 
-public record TodoModel(int userId, int id, String title, boolean completed) {
+public record TodoModel(Integer userId, Integer id, String title, Boolean completed) {
 
 }
