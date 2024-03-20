@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 public class GetListRequest<T> implements Request {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final String url;
-    private final GenericType<?> respType;
-    private HttpResponse<?> response;
+    private final GenericType<T> respType;
+    private HttpResponse<T> response;
 
 
     public GetListRequest(String url, GenericType<T> respType) {
@@ -28,7 +28,7 @@ public class GetListRequest<T> implements Request {
         printResponse(response);
     }
 
-    public HttpResponse getResponse() {
+    public HttpResponse<T> getResponse() {
         return response;
     }
 }
